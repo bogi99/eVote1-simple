@@ -14,6 +14,18 @@ services:
     depends_on:
       - mysql
       - redis
+    # Security enhancements for voting system
+    security_opt:
+      - no-new-privileges:true
+    read_only: false # Set to true in production with proper volume mounts
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+    user: "1001:1001" # Use the appuser we created
+    restart: unless-stopped
   mysql:
     image: "mysql/mysql-server:8.0"
     ports:

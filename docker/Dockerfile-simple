@@ -1,8 +1,45 @@
-FROM php:8.4-cli
+FROM ubuntu:22.04
 
-# Install MySQL PDO extension
-RUN docker-php-ext-install pdo pdo_mysql
+# Prevent interactive prompts during installation
+ENV DEBIAN_FRONTEND=noninteractive
 
+# Install security updates and PHP 8.2 (LTS)
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y \
+    software-properties-common \
+    ca-certificates \
+    curl \
+    && add-apt-repository ppa:ondrej/php \
+    && apt-get update \
+    && apt-get install -y \
+    php8.2-cli \
+    php8.2-pdo \
+    php8.2-mysql \
+    php8.2-mbstring \
+    php8.2-xml \
+    php8.2-curl \
+    php8.2-zip \
+    php8.2-intl \
+    && apt-get remove --purge -y software-properties-common \
+    && apt-get autoremove -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Security hardening
+RUN groupadd -r -g 1001 appuser && \
+    useradd -r -u 1001 -g appuser -s /bin/false -c "Application User" appuser
+
+# Set secure working directory
 WORKDIR /var/www/html
+RUN chown -R appuser:appuser /var/www/html && \
+    chmod 755 /var/www/html
+
+# Switch to non-root user for security
+USER appuser
 
 EXPOSE 8000
+
+# Add health check for security monitoring
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD php -v || exit 1
