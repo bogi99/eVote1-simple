@@ -1,0 +1,126 @@
+# Environment Configuration
+.env
+.env.local
+.env.*.local
+.env.backup
+.env.production
+
+# Composer Dependencies
+/vendor/
+# composer.lock  # Keep this for applications, ignore for libraries
+
+# Docker & Laravel Sail
+/docker-compose.override.yml
+/.dockerignore
+
+# IDE & Editor Files  
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# PHP & Application Files
+*.log
+/storage/logs/*
+!/storage/logs/.gitkeep
+/bootstrap/cache/*
+!/bootstrap/cache/.gitkeep
+/public/storage
+/storage/app/*
+!/storage/app/.gitkeep
+!/storage/app/public/
+/storage/framework/cache/*
+!/storage/framework/cache/.gitkeep
+/storage/framework/sessions/*
+!/storage/framework/sessions/.gitkeep
+/storage/framework/testing/*
+!/storage/framework/testing/.gitkeep
+/storage/framework/views/*
+!/storage/framework/views/.gitkeep
+
+# Voting System Sensitive Data
+/database/backups/
+/database/exports/
+/election-data/
+/voter-data/
+/vote-exports/
+*.sql.gz
+*.sql.backup
+election-results-*.json
+election-results-*.csv
+election-results-*.xml
+voter-list-*.csv
+
+# Runtime Configuration Files
+/config/database.local.php
+/config/secrets.php
+
+# Development & Testing
+/node_modules/
+/public/hot
+/public/mix-manifest.json
+npm-debug.log*
+yarn-error.log
+/.pnp
+.pnp.js
+
+# Coverage & Testing
+/coverage/
+/.nyc_output
+phpunit.xml
+.phpunit.result.cache
+
+# Cache & Temporary Files
+*.cache
+/tmp/
+/temp/
+.sass-cache/
+.parcel-cache/
+
+# Security & Keys (Critical for Voting Systems)
+*.key
+*.pem
+*.p12
+*.pfx
+/keys/
+/certificates/
+/ssl/
+private-key*
+public-key*
+
+# System Files
+.htaccess.bak
+.htpasswd
+robots.txt.bak
+
+# Package Manager Files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Runtime & Process Files
+*.pid
+*.seed
+*.pid.lock
+
+# Deployment & CI/CD
+/.github/workflows/deploy.yml
+/deployment/
+/scripts/deploy.sh
+/scripts/backup.sh
+ansible-vault-pass
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# OS Specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini

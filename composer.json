@@ -1,0 +1,19 @@
+{
+    "name": "bogi/evote-simple",
+    "description": "evote simple",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Bogi\\EvoteSimple\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "sam",
+            "email": "khangyi@shaw.ca"
+        }
+    ],
+    "require-dev": {
+        "laravel/sail": "^1.46"
+    }
+}
