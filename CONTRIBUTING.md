@@ -17,7 +17,7 @@ Before contributing, please understand our core principles:
 
 1. **Fork and Clone**
    ```bash
-   git clone https://github.com/YOUR-USERNAME/eVote1-simple.git
+   git clone https://github.com/bogi99/eVote1-simple.git
    cd eVote1-simple
    ```
 
